@@ -1,4 +1,6 @@
 import 'dart:async';
+
+import 'package:flutter/foundation.dart';
 import 'package:geolocator/geolocator.dart';
 
 /// Can be used to get the current location of the device, update it and handle location permissions
@@ -77,10 +79,10 @@ class ARLocationManager {
 
     // When we reach here, permissions are granted and we can
     // continue accessing the position of the device.
-    locationStream =
-        Geolocator.getPositionStream(locationSettings: LocationSettings(accuracy: LocationAccuracy.high))
-            .listen((Position position) {
-      //print(position.latitude.toString() + ', ' + position.longitude.toString());
+    locationStream = Geolocator.getPositionStream(
+            locationSettings: LocationSettings(accuracy: LocationAccuracy.high))
+        .listen((Position position) {
+      debugPrint(position.latitude.toString() + ', ' + position.longitude.toString());
       currentLocation = position;
     });
 
